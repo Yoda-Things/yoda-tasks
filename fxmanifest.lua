@@ -1,10 +1,13 @@
 -- Generated automaticly by RB Generator.
 fx_version 'cerulean'
 author 'YODA-THINGS'
-games  'gta5'
+game  'gta5'
+lua54 'yes'
 
-shared_script '';
+client_script 'client/main.lua';
 
-client_scripts {
+ui_page 'ui/ui.html'
 
-};
+files {
+    'ui/*'
+}

@@ -10,10 +10,7 @@ body {
     overflow: hidden;
     display: flex;
 }
-button {
-    width: 10vw;
-    height: 5vw;
-}
+
 .prog-task-container {
     display: none;
     position: fixed;
@@ -60,22 +57,20 @@ button {
     height: 0.5vw;
     overflow: hidden;
     border-radius: 0.5vw;
-    background-color: rgb(14, 27, 27);
+    background-color: rgba(0, 0, 0, 0.401);
 }
 
 .progbar-progress {
-    width: calc(16.5*0.3vw);
     height: 0.5vw;
-    background-color: rgb(0,255,170)
 }
+
 .task-info {
     margin-top: 0.2vw;
 }
+
 .task-color {
     color: rgb(0, 255, 170);
 }
-
-
 
 .fade-in {
     animation: fadeIn 1s ease-out;

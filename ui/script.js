@@ -6,12 +6,9 @@ let currentColor = "";
 window.addEventListener("message", function (event) {
     var e = event.data
     if (e.action === "showTask") {
-        if (e.count !== undefined) {
-            appendProgTaskUI(null, e.count);
-        }
-        else {
-            appendProgTaskUI(e.title, e.count, e.maxcount, e.icon, e.color);
-        }
+        appendProgTaskUI(e.title, e.count, e.maxcount, e.icon, e.color);
+    } else if (e.action === "showOrder") {
+
     }
 });
 
@@ -47,7 +44,7 @@ function appendProgTaskUI(title, count, maxcount, icon, color) {
             <div class="right-part-cont">
                 <div class="prog-title">${currentTitle}</div>
                 <div class="progbar-container">
-                    <div class="progbar-progress" style="width: ${progressBarWidth}vw"></div>
+                    <div class="progbar-progress" style="width: ${progressBarWidth}vw; background-color: ${currentColor}"></div>
                 </div>
                 <div class="task-info">${count}/${currentMaxCount}</div>
             </div>
@@ -55,6 +52,7 @@ function appendProgTaskUI(title, count, maxcount, icon, color) {
 
         container.innerHTML = newContent;
     } else {
+        const container = document.querySelector(".prog-task-container");
         container.innerHTML = ""
         container.style.display = 'none'
     }
