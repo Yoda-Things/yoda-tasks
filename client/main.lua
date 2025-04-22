@@ -33,24 +33,25 @@ function showProgTask(title, count, maxcount, icon, color)
 end
 
 function updateProgTask(newcount)
-    currentTask.count = newcount
-    SendNUIMessage({
-        action = 'showTask',
-        count = currentTask.count,
-        title = currentTask.title,
-        maxcount = currentTask.maxcount,
-        icon = currentTask.icon,
-        color = currentTask.color
-    })
+        currentTask.count = newcount
+        SendNUIMessage({
+            action = 'showTask',
+            count = currentTask.count,
+            title = currentTask.title,
+            maxcount = currentTask.maxcount,
+            icon = currentTask.icon,
+            color = currentTask.color
+        })
+        if newcount == currentTask.maxcount then
+            currentTask = {
+                title = "",
+                count = 0,
+                maxcount = 0,
+                icon = "",
+                color = ""
+            }
+        end
 end
-
-RegisterCommand("test_task", function(src, args, rawCommand)
-    showProgTask('Pickup the garbage cans', 5, 10, 'fa-solid fa-truck-field', 'rgb(0,255,170)')
-end)
-
-RegisterCommand("updateTask", function(src, args, rawCommand)
-    updateProgTask(tonumber(args[1]))
-end)
 
 exports('showProgTask', function(title, count, maxcount, icon, color)
     showProgTask(title, count, maxcount, icon, color)
@@ -58,4 +59,30 @@ end)
 
 exports('updateProgTask', function(count)
     updateProgTask(count)
+end)
+
+function showSimpleTask(message, color)
+    local formattedMessage = message
+    SendNUIMessage({
+        action = 'showSimpleTask',
+        title = formattedMessage,
+    })
+end
+
+RegisterNetEvent("yoda-tasks:ShowSimpleTask")
+AddEventHandler("yoda-tasks:ShowSimpleTask", function(title, message)
+    showSimpleTask(title, message)
+end)
+
+RegisterNetEvent("yoda-tasks:CancelSimpleTask")
+AddEventHandler("yoda-tasks:CancelSimpleTask", function()
+    cancelSimpleTask()
+end)
+
+exports('showSimpleTask', function(title, message)
+    showSimpleTask(title, message)
+end)
+
+exports('cancelSimpleTask', function()
+    cancelSimpleTask()
 end)

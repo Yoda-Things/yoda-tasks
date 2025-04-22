@@ -84,3 +84,112 @@ body {
         opacity: 1;
     }
 }
+
+.success-animation { margin:150px auto;}
+
+.checkmark {
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 1.5;
+    stroke: #4bb71b;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px #4bb71b;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    position:relative;
+    top: 0.5vw;
+    right: 0.1vw;
+   margin: 0 auto;
+}
+.checkmark__circle {
+    stroke-dasharray: 155;
+    stroke-dashoffset: 155;
+    stroke-width: 1.5;
+    stroke-miterlimit: 10;
+    stroke: #4bb71b;
+    fill: #1c1c27;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes scale {
+    0%, 100% {
+        transform: none;
+    }
+
+    50% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 30px #4bb71b;
+    }
+}
+
+/* Simple Task Container Styling */
+.simple-task-container {
+    display: none;
+    position: fixed;
+    top: 25rem;
+    right: 2.5rem;
+    z-index: 9999;
+    flex-direction: column;
+    width: fit-content;
+    min-width: 12.5vw;
+    animation: fadeIn 1s ease-out;
+}
+
+.simple-task-box {
+    display: flex;
+    top: 0vw;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.simple-task-header {
+    width: 100%;
+    padding: 0.8vw 0.8vw 0.4vw 0.8vw;
+    border-bottom: 0.25vw solid;
+    text-align: left;
+    border-image: linear-gradient(to right, rgba(22, 180, 128, 0.5), rgb(0, 255, 170), rgba(22, 180, 128, 0.5)) 1;
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+.simple-task-header h2 {
+    margin: 0;
+    font-size: 1.2vw;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+    font-weight: 500;
+    color: rgb(124, 124, 124);
+}
+
+.simple-task-message {
+    width: 100%;
+    text-align: left;
+    padding: 0.4vw 0.8vw;
+    border-radius: 0 0 0.3vw 0.3vw;
+}
+
+.simple-task-message h3 {
+    margin: 0;
+    font-size: 1vw;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+    font-weight: 400;
+    color: white;
+}

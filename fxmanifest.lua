@@ -11,3 +11,9 @@ ui_page 'ui/ui.html'
 files {
     'ui/*'
 }
+escrow_ignore {
+    'client/main.lua',
+    'ui/*',
+    'fxmanifest.lua',
+    'README.md' 
+}
